@@ -1,0 +1,12 @@
+:root{
+    --morado: #DD4470;
+    --rosa: #FE72A9;
+    --verde: #C6DF76;
+    --piel: #FFE3B3;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    background-color: var(--piel);
+}
