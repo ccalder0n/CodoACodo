@@ -19,7 +19,7 @@ a{
     color: var(--verde);
 }
 
-input{
+.input{
     width: 100%;
 }
 
@@ -28,7 +28,7 @@ input{
     height: 100vh;
     background-image:url("/static/img/fondo.jpg");
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     background-size:cover;
     display: flex;
     flex-direction: column;
@@ -43,8 +43,7 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 25%;
+    justify-content:space-evenly;
     min-width: 220px;
     height: 280px;
     background-color: transparent;
@@ -55,6 +54,5 @@ input{
 }
 
 .login{
-    height: 50%;
     text-align: center;
 }
