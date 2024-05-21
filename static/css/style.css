@@ -94,6 +94,24 @@ article{
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+#articulo {
+
+}
+
+.titulo-articulo{
+    width: 60%;
+    max-width: 10px;
+    margin: auto;
+    padding: 5px;
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+    padding: 5px;
+    text-align: center;
+}
+s
+
 /*Cards*/
 .container-card{
     width: 100%;
