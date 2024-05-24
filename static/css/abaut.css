@@ -66,7 +66,7 @@ input::placeholder, textarea::placeholder{
     background-color: #50e04b;
 }
 @media(max-width:991px){
-    body {
+    section {
         padding: 30px;
     }
     form {
