@@ -47,6 +47,10 @@ header{
     width: 20%;
 }
 
+.header-img-logo{
+    width: 15%;
+}
+
 nav{
     width: 100%;
     display: flex;
@@ -81,7 +85,7 @@ nav{
 
 @media only screen  and (min-width: 375px){
     #encabezado {height: auto;}
-    :root{font-size: 7px;}
+    :root{font-size: 5px;}
     nav {flex-direction: column; height: auto;}
     .pestaña:hover{transform: translate(20px);}
 }

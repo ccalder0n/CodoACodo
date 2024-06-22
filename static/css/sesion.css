@@ -14,7 +14,7 @@
 body{
     background-image: url(../img/fondo2.png);
     background-repeat: repeat;
-    background-size: contain;
+    background-size: cover;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     color: var(--negro);
