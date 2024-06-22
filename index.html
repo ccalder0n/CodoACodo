@@ -3,30 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1177/1177771.png" type="image/x-icon">
-    <link rel="stylesheet" href="static/css/sesion.css">
-    <title>Ninja PC</title>
+    <link href="https://cdn-icons-png.flaticon.com/512/1177/1177771.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Inicio</title>
 </head>
 <body>
-    <section class="container-login">
-        
-        <div class="box-login">
-            <form class="login">
-                <label for="usuario">Usuario</label>
-                <br>
-                <input class="input" type="email" id="usuario" name="usuario" placeholder="usuario@mail.com" required>
-                <br>
-                <label for="contraseña">Contraseña</label>
-                <br>
-                <input class="input" type="password" id="contraseña" name="contraseña" size="15" required>
-                <br>
-                <input type="submit" value="Ingresar">
-            </form>
-            <div>
-                <p>¿No esta registrado?</p>
-                <a href="templates/inicio.html">Entrar como invitado</a>
-            </div>
+    <header>
+        <div id="encabezado">
+            <div id="logos"><img class="header-img" src="../static/img/logo.png" alt=""></div>
+            <div id="titulo"><img class="header-img" src="../static/img/titulo.png" alt=""></div>
+            <div id="sesion"><a id="cuenta" href="../templates/sesion.html">Iniciar Sesion</a></div>
         </div>
-    </section>
+        <div> 
+            <nav>
+                <a class="pestaña" href="index.html">Inicio</a>
+                <a class="pestaña" href="./templates/noticias.html">Noticias</a>
+                <a class="pestaña" href="./templates/hardware.html">Hardware</a>
+                <a class="pestaña" href="./templates/about.html">Nosotros</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="seccion1">
+            <article class="tarjeta">
+                <h1>¿Que vas a encontrar en este sitio?</h1>
+                <img class="imagen-inicio" src="https://gaceta.cch.unam.mx/sites/default/files/styles/imagen_articulos_1920x1080/public/2022-12/pag_26a.png?h=bb5e021e&itok=DBjHer4V" alt="">
+                <ul>
+                    <li>Ultimas noticias sobre ciencia y tecnología.</li>
+                    <li>Cobertura de los mejores eventos.</li>
+                    <li>Consejos de nuestros especialistas.</li>
+                </ul>
+            </article>
+        </section>
+        <section class="seccion2">
+            <article class="tarjeta">
+                <p>
+                    Esperamos disfrutes tu estadia y no dudes en dejarnos tu opinion, es la 
+                    unica manera en la que podemos mejorar nuestro contenido y asegurarnos 
+                    que el sitio se mantenga activo e interesante para todos.
+                </p>
+                <p>
+                    Siguenos en nuestras redes para recibir las notificaciones lo antes posible.
+                </p>
+                <img class="imagen-inicio" src="https://edworking.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fdratini%2Fblog%2Fsmall%2FBestMeetingManagementSoftwareIn2022.png&w=1200&q=75" alt="">
+            </article>
+        </section>
+    </main>
+    <footer></footer>
 </body>
 </html>
