@@ -38,6 +38,15 @@
   
   .productoContainer {
     padding: 2rem;
+  
+    margin: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.2s;
+    max-width: 400px;
+    text-align: center;
   }
   
 
@@ -51,6 +60,13 @@
   }
   .producto-precio{
     color:red
+  }
+
+  .producto-imagen{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
   }
   
   @media (max-width: 768px) {

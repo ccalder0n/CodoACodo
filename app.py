@@ -48,7 +48,7 @@ class Catalogo:
     
     def agregar_producto(self, descripcion, cantidad, precio, imagen, categoria , marca):
                
-        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url, categoria , marca) VALUES (%s, %s, %s, %s, %s)"
+        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url, categoria , marca) VALUES (%s, %s, %s, %s, %s , %s)"
         valores = (descripcion, cantidad, precio, imagen, categoria , marca)
 
         self.cursor.execute(sql, valores)        
@@ -102,15 +102,13 @@ class Catalogo:
 # Cuerpo del programa
 #--------------------------------------------------------------------
 # Crear una instancia de la clase Catalogo
-catalogo = Catalogo(host='localhost', user='root', password='', database='ninja')
-#catalogo = Catalogo(host='USUARIO.mysql.pythonanywhere-services.com', user='USUARIO', password='CLAVE', database='USUARIO$ninja')
+# catalogo = Catalogo(host='localhost', user='root', password='', database='ninja')
+catalogo = Catalogo(host='santicasalis.mysql.pythonanywhere-services.com', user='santicasalis', password='17397060Ok', database='santicasalis$ninja')
 
 
 # Carpeta para guardar las imagenes.
-RUTA_DESTINO = './static/img/'
 
-#Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
-#RUTA_DESTINO = '/home/USUARIO/mysite/static/imagenes'
+RUTA_DESTINO = '/home/santicasalis/mysite/static/img'
 
 
 
