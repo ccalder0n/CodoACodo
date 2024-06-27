@@ -108,6 +108,7 @@ fetch(URL + 'productos')
           productoContainer.innerHTML = `
             
                  <p class="categoria-producto">${producto.categoria}</p>
+                 <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
                 <h2>${producto.descripcion}</h2>
                 <p>${producto.marca}</p>
                
@@ -120,6 +121,30 @@ fetch(URL + 'productos')
         }
     })
     .catch(function (error) {
-        // Código para manejar errores
+        
         alert('Error al obtener los productos.');
     });
+
+
+
+
+
+
+  function eliminarProducto(codigo) {
+    
+      if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+          fetch(URL + `productos/${codigo}`, { method: 'DELETE' })
+              .then(response => {
+                  if (response.ok) {
+                  
+                    alert('Producto eliminado .');
+                    window.location.reload();
+                  }
+              })
+              
+              .catch(error => {
+                  alert(error.message);
+              });
+      }
+  }
+
