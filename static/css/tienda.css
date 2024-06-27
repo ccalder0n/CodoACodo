@@ -1,3 +1,23 @@
+.seccionUno{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.seccionUno button{
+  padding: 10px;
+  border: none;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+  margin-right: 20px;
+}
+.seccionUno button a {
+  text-decoration: none;
+  color: white;
+}
+
 .buscar-container {
     display: flex;
     justify-content: center;
