@@ -1,13 +1,23 @@
+:root{
+  --morado: #dd4470;
+  --rosa: #eb5982;
+  --gris: #c0bfbf;
+  --oscuro: rgb(63, 62, 62);
+  --claro: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .seccionUno{
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  background-color: var(--gris);
 }
 
 .seccionUno button{
   padding: 10px;
   border: none;
-  background-color: #4CAF50;
+  background-color: var(--morado);
   border-radius: 5px;
   cursor: pointer;
   height: 40px;
@@ -15,7 +25,7 @@
 }
 .seccionUno button a {
   text-decoration: none;
-  color: white;
+  color: var(--claro);
 }
 
 .buscar-container {
@@ -27,25 +37,27 @@
 .buscar-bar {
     width: 300px;
     padding: 10px;
-    border: 2px solid #ccc;
+    border: 2px solid var(--morado);
     border-radius: 5px;
 }
 
 .buscar-button {
-    padding: 10px;
+    margin: 0 20px;
     border: none;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--morado);
+    color: var(--claro);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .buscar-button:hover {
-    background-color: #45a049;
+    background-color: var(--rosa);
 }
 
 
 .productosContainer {
+    min-height: 70vh;
+    background-color: var(--gris);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -53,17 +65,15 @@
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
-    margin: 2rem;
   }
   
   .productoContainer {
     padding: 2rem;
-  
     margin: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--claro);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: var(--claro);
     transition: transform 0.2s;
     max-width: 400px;
     text-align: center;
@@ -72,14 +82,14 @@
 
   
   .productoDetalle {
-    background-color: red;
+    background-color: var(--morado);
   }
   .categoria-producto {
-    color :#ca3d38;
+    color: var(--morado);
     font-weight: bold;
   }
   .producto-precio{
-    color:red
+    color: var(--morado);
   }
 
   .producto-imagen{
@@ -89,8 +99,8 @@
     margin: 0 auto;
   }
   .boton-eliminar {
-    background-color: #ff6347; /* Color de fondo */
-    color: #fff; /* Color del texto */
+    background-color: var(--rosa); /* Color de fondo */
+    color: var(--claro); /* Color del texto */
     border: none; /* Sin borde */
     padding: 0.5rem 1rem; /* Espaciado interno */
     cursor: pointer; /* Cambiar cursor a pointer al pasar el mouse */
