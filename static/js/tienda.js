@@ -187,6 +187,7 @@ function mostrarProductos(productos) {
           productoContainer.innerHTML = `
               <p class="categoria-producto">${producto.categoria}</p>
               <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
+              <a href="editar.html?codigo=${producto.codigo}">Editar</a>
               <h2>${producto.descripcion}</h2>
               <p>${producto.marca}</p>
               <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">

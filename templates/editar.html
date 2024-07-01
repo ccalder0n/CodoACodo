@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Producto 🚀</title>
+    <link rel="stylesheet" href="./static/css/estilos.css">
+</head>
+
+<body>
+    <h1>Modificar Producto</h1><br>
+
+    <div id="app">
+        <div id="datos-producto">
+            
+            <form id="form-guardar-cambios">
+                <label for="descripcionModificar">Descripción:</label>
+                <input type="text" id="descripcionModificar" required><br>
+
+                <label for="cantidadModificar">Cantidad:</label>
+                <input type="number" id="cantidadModificar" required><br>
+
+                <label for="precioModificar">Precio:</label>
+                <input type="number" step="0.01" id="precioModificar" required><br>
+
+                <label for="marcaModificar">Marca:</label>
+                <input type="text" step="0.01" id="marcaModificar" required><br>
+
+                <label for="categoriaModificar">Categoria:</label>
+                <input type="text" step="0.01" id="categoriaModificar" required><br>
+                <img id="imagen-actual" style="max-width: 200px; display: none;">
+                <img id="imagen-vista-previa"  style="max-width: 200px; display: none;">
+
+                <label for="nuevaImagen">Nueva Imagen:</label>
+                <input type="file" id="nuevaImagen"><br>
+
+                <button type="submit">Guardar Cambios</button>
+                <a href="tienda.html">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const URL = "https://santicasalis.pythonanywhere.com/";
+
+        let codigo = new URLSearchParams(window.location.search).get('codigo');
+        let descripcion = '';
+        let cantidad = '';
+        let precio = '';
+        let categoria = '';
+        let marca = '';
+        let imagen_url = '';
+        let imagenSeleccionada = null;
+        let imagenUrlTemp = null;
+        let mostrarDatosProducto = false;
+
+        document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
+        document.getElementById('nuevaImagen').addEventListener('change', seleccionarImagen);
+
+        document.addEventListener('DOMContentLoaded', obtenerProducto);
+
+        function obtenerProducto() {
+            console.log("Código obtenido de la URL:", codigo); // Verificar que el código se obtiene correctamente
+            fetch(URL + 'productos/' + codigo)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error al obtener los datos del producto.');
+                    }
+                })
+                .then(data => {
+                    console.log("Datos obtenidos del producto:", data); 
+                    descripcion = data.descripcion;
+                    cantidad = data.cantidad;
+                    precio = data.precio;
+                    marca = data.marca;
+                    categoria = data.categoria;
+                    imagen_url = data.imagen_url;
+                    mostrarDatosProducto = true;
+                    mostrarFormulario();
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert('Código no encontrado.');
+                });
+        }
+
+        function mostrarFormulario() {
+            if (mostrarDatosProducto) {
+                document.getElementById('descripcionModificar').value = descripcion;
+                document.getElementById('cantidadModificar').value = cantidad;
+                document.getElementById('precioModificar').value = precio;
+                document.getElementById('marcaModificar').value = marca;
+                document.getElementById('categoriaModificar').value = categoria;
+
+                const imagenActual = document.getElementById('imagen-actual');
+                if (imagen_url && !imagenSeleccionada) {
+                    imagenActual.src = './static/img/' + imagen_url;
+                    imagenActual.style.display = 'block';
+                } else {
+                    imagenActual.style.display = 'none';
+                }
+
+                document.getElementById('datos-producto').style.display = 'block';
+            } else {
+                document.getElementById('datos-producto').style.display = 'none';
+            }
+        }
+
+        function seleccionarImagen(event) {
+            const file = event.target.files[0];
+            imagenSeleccionada = file;
+            imagenUrlTemp = URL.createObjectURL(file);
+
+            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
+            imagenVistaPrevia.src = imagenUrlTemp;
+            imagenVistaPrevia.style.display = 'block';
+        }
+
+        function guardarCambios(event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('codigo', codigo);
+            formData.append('descripcion', document.getElementById('descripcionModificar').value);
+            formData.append('cantidad', document.getElementById('cantidadModificar').value);
+            formData.append('precio', document.getElementById('precioModificar').value);
+            formData.append('marca', document.getElementById('marcaModificar').value);
+            formData.append('categoria', document.getElementById('categoriaModificar').value);
+
+            if (imagenSeleccionada) {
+                formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
+            }
+
+            fetch(URL + 'productos/' + codigo, {
+                method: 'PUT',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error al guardar los cambios del producto.');
+                    }
+                })
+                .then(data => {
+                    alert('Producto actualizado correctamente.');
+                    limpiarFormulario();
+                })
+
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al actualizar el producto.');
+                })
+                .finally(() => {
+        window.location.href = 'tienda.html';
+    });
+        }
+
+        function limpiarFormulario() {
+            document.getElementById('descripcionModificar').value = '';
+            document.getElementById('cantidadModificar').value = '';
+            document.getElementById('precioModificar').value = '';
+            document.getElementById('categoriaModificar').value = '';
+            document.getElementById('marcaModificar').value = '';
+            document.getElementById('nuevaImagen').value = '';
+
+            const imagenActual = document.getElementById('imagen-actual');
+            imagenActual.style.display = 'none';
+
+            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
+            imagenVistaPrevia.style.display = 'none';
+
+            codigo = '';
+            descripcion = '';
+            cantidad = '';
+            precio = '';
+            marca = '';
+            categoria = '';
+            imagen_url = '';
+            imagenSeleccionada = null;
+            imagenUrlTemp = null;
+            mostrarDatosProducto = false;
+
+            document.getElementById('datos-producto').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
