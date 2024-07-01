@@ -172,21 +172,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function mostrarProductos(productos) {
-    let productosContainer = document.getElementById('productos');
-    productosContainer.innerHTML = '';
-    productos.forEach(producto => {
-        let productoContainer = document.createElement("div");
-        productoContainer.classList.add("productoContainer");
-        productoContainer.innerHTML = `
-            <p class="categoria-producto">${producto.categoria}</p>
-            <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
-            <h2>${producto.descripcion}</h2>
-            <p>${producto.marca}</p>
-            <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">
-            <h4 class="producto-precio">${producto.precio}</h4>
-        `;
-        productosContainer.appendChild(productoContainer);
-    });
+  let productosContainer = document.getElementById('productos');
+  productosContainer.innerHTML = '';
+
+  if (productos.length === 0) {
+    let mensaje = document.createElement("p");
+    mensaje.classList.add("errorBusqueda")
+      mensaje.innerText = "No se ha encontrado ningún artículo.";
+      productosContainer.appendChild(mensaje);
+  } else {
+      productos.forEach(producto => {
+          let productoContainer = document.createElement("div");
+          productoContainer.classList.add("productoContainer");
+          productoContainer.innerHTML = `
+              <p class="categoria-producto">${producto.categoria}</p>
+              <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
+              <h2>${producto.descripcion}</h2>
+              <p>${producto.marca}</p>
+              <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">
+              <h4 class="producto-precio">${producto.precio}</h4>
+          `;
+          productosContainer.appendChild(productoContainer);
+      });
+  }
 }
 
 function eliminarProducto(codigo) {

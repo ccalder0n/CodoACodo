@@ -53,6 +53,14 @@
 .buscar-button:hover {
     background-color: var(--rosa);
 }
+.errorBusqueda{
+  color:red;
+  font-size: 24px; 
+    text-align: center; 
+    margin: 0 auto;
+    
+
+}
 
 
 .productosContainer {
