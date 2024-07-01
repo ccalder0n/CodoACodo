@@ -198,6 +198,16 @@ function mostrarProductos(productos) {
   }
 }
 
+function filtrarPorCategoria(categoria) {
+  const productosFiltrados = todosLosProductos.filter(producto => 
+      producto.categoria.toLowerCase() === categoria.toLowerCase()
+  );
+  mostrarProductos(productosFiltrados);
+}
+function mostrarTodos() {
+  mostrarProductos(todosLosProductos);
+}
+
 function eliminarProducto(codigo) {
     if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
         fetch(URL + `productos/${codigo}`, { method: 'DELETE' })

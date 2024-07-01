@@ -32,10 +32,19 @@
                     <input type="text" class="buscar-bar" id="buscar-bar" placeholder="Buscar...">
                     <button class="buscar-button">Buscar</button> 
                 </div>
+
+                <div class="filter-buttons">
+                    <button onclick="filtrarPorCategoria('computadoras')">Computadoras</button>
+                    <button onclick="filtrarPorCategoria('celulares')">Celulares</button>
+                    <button onclick="filtrarPorCategoria('accesorios')">Accesorios</button>
+                    <button onclick="mostrarTodos()">Mostrar Todos</button>
+                </div>
         </div>
         <div class="productosContainer" id="productos">
 
         </div>
+
+
     </main>
     <footer>
         <div id="pie">
