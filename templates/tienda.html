@@ -30,12 +30,27 @@
                 <div class="buscar-container">
                     <button class="buscar-button"><a href="nuevoProducto.html">Agregar Producto</a></button>
                     <input type="text" class="buscar-bar" id="buscar-bar" placeholder="Buscar...">
-                    <button class="buscar-button">Buscar</button> 
+                    
                 </div>
+
+                <div class="filter-buttons">
+                    <button onclick="filtrarPorCategoria('computadoras')">Computadoras</button>
+                    <button onclick="filtrarPorCategoria('celulares')">Celulares</button>
+                    <button onclick="filtrarPorCategoria('accesorios')">Accesorios</button>
+                    <button onclick="mostrarTodos()">Mostrar Todos</button>
+                   
+                </div>
+                <div class="filter-buttons">  <select id="ordenarPrecio" onchange="ordenarPorPrecio(this.value)">
+                    <option value="">Ordenar por Precio</option>
+                    <option value="asc">Menor a Mayor</option>
+                    <option value="desc">Mayor a Menor</option>
+                </select>
         </div>
         <div class="productosContainer" id="productos">
 
         </div>
+
+
     </main>
     <footer>
         <div id="pie">
