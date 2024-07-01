@@ -106,7 +106,7 @@
     display: block;
     margin: 0 auto;
   }
-  .boton-eliminar {
+  .boton-editar, .boton-eliminar {
     background-color: var(--rosa); /* Color de fondo */
     color: var(--claro); /* Color del texto */
     border: none; /* Sin borde */
