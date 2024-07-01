@@ -86,67 +86,6 @@
 //   ];
   
 
-// const URL = "https://santicasalis.pythonanywhere.com/"
-
-
-// fetch(URL + 'productos')
-//   .then(function (response) {
-//     console.log(response);
-//       if (response.ok) {
-          
-//             return response.json();
-//         } else {
-//             throw new Error('Error al obtener los productos.');
-//         }
-//     })
-//     .then(function (data) {
-//       let productos = document.getElementById('productos');
-//       console.log(data);
-//         for (let producto of data) {
-//             let productoContainer = document.createElement("div");
-//             productoContainer.classList.add("productoContainer");
-//           productoContainer.innerHTML = `
-            
-//                  <p class="categoria-producto">${producto.categoria}</p>
-//                  <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
-//                 <h2>${producto.descripcion}</h2>
-//                 <p>${producto.marca}</p>
-               
-//                 <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">
-                
-//                 <h4 class="producto-precio">${producto.precio}</h4>
-                
-//             `;
-//             productos.appendChild(productoContainer);
-//         }
-//     })
-//     .catch(function (error) {
-        
-//         alert('Error al obtener los productos.');
-//     });
-
-
-
-
-
-
-//   function eliminarProducto(codigo) {
-    
-//       if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-//           fetch(URL + `productos/${codigo}`, { method: 'DELETE' })
-//               .then(response => {
-//                   if (response.ok) {
-                  
-//                     alert('Producto eliminado .');
-//                     window.location.reload();
-//                   }
-//               })
-              
-//               .catch(error => {
-//                   alert(error.message);
-//               });
-//       }
-//   }
 
 
 const URL = "https://santicasalis.pythonanywhere.com/";
@@ -207,6 +146,20 @@ function filtrarPorCategoria(categoria) {
 function mostrarTodos() {
   mostrarProductos(todosLosProductos);
 }
+
+function ordenarPorPrecio(orden) {
+  let productosOrdenados = [...todosLosProductos]; 
+  if (orden === 'asc') {
+      productosOrdenados.sort((a, b) => parseFloat(a.precio) - parseFloat(b.precio));
+  } else if (orden === 'desc') {
+      productosOrdenados.sort((a, b) => parseFloat(b.precio) - parseFloat(a.precio));
+  } else {
+      productosOrdenados = todosLosProductos; 
+  }
+
+  mostrarProductos(productosOrdenados);
+}
+
 
 function eliminarProducto(codigo) {
     if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
