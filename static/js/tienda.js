@@ -86,65 +86,130 @@
 //   ];
   
 
-const URL = "https://santicasalis.pythonanywhere.com/"
+// const URL = "https://santicasalis.pythonanywhere.com/"
 
 
-fetch(URL + 'productos')
-  .then(function (response) {
-    console.log(response);
-      if (response.ok) {
+// fetch(URL + 'productos')
+//   .then(function (response) {
+//     console.log(response);
+//       if (response.ok) {
           
-            return response.json(); 
-        } else {
-            throw new Error('Error al obtener los productos.');
-        }
-    })
-    .then(function (data) {
-      let productos = document.getElementById('productos'); 
-      console.log(data);
-        for (let producto of data) {
-            let productoContainer = document.createElement("div");
-            productoContainer.classList.add("productoContainer");
-          productoContainer.innerHTML = `
+//             return response.json();
+//         } else {
+//             throw new Error('Error al obtener los productos.');
+//         }
+//     })
+//     .then(function (data) {
+//       let productos = document.getElementById('productos');
+//       console.log(data);
+//         for (let producto of data) {
+//             let productoContainer = document.createElement("div");
+//             productoContainer.classList.add("productoContainer");
+//           productoContainer.innerHTML = `
             
-                 <p class="categoria-producto">${producto.categoria}</p>
-                 <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
-                <h2>${producto.descripcion}</h2>
-                <p>${producto.marca}</p>
+//                  <p class="categoria-producto">${producto.categoria}</p>
+//                  <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
+//                 <h2>${producto.descripcion}</h2>
+//                 <p>${producto.marca}</p>
                
-                <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">
+//                 <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">
                 
-                <h4 class="producto-precio">${producto.precio}</h4>
+//                 <h4 class="producto-precio">${producto.precio}</h4>
                 
-            `;
-            productos.appendChild(productoContainer);
-        }
-    })
-    .catch(function (error) {
+//             `;
+//             productos.appendChild(productoContainer);
+//         }
+//     })
+//     .catch(function (error) {
         
-        alert('Error al obtener los productos.');
-    });
+//         alert('Error al obtener los productos.');
+//     });
 
 
 
 
 
 
-  function eliminarProducto(codigo) {
+//   function eliminarProducto(codigo) {
     
-      if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-          fetch(URL + `productos/${codigo}`, { method: 'DELETE' })
-              .then(response => {
-                  if (response.ok) {
+//       if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+//           fetch(URL + `productos/${codigo}`, { method: 'DELETE' })
+//               .then(response => {
+//                   if (response.ok) {
                   
-                    alert('Producto eliminado .');
-                    window.location.reload();
-                  }
-              })
+//                     alert('Producto eliminado .');
+//                     window.location.reload();
+//                   }
+//               })
               
-              .catch(error => {
-                  alert(error.message);
-              });
-      }
-  }
+//               .catch(error => {
+//                   alert(error.message);
+//               });
+//       }
+//   }
 
+
+const URL = "https://santicasalis.pythonanywhere.com/";
+
+let todosLosProductos = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch(URL + 'productos')
+        .then(response => {
+            if (response.ok) {
+                return response.json(); 
+            } else {
+                throw new Error('Error al obtener los productos.');
+            }
+        })
+        .then(data => {
+            todosLosProductos = data;
+            mostrarProductos(todosLosProductos);
+        })
+        .catch(error => {
+            alert('Error al obtener los productos.');
+        });
+});
+
+function mostrarProductos(productos) {
+    let productosContainer = document.getElementById('productos');
+    productosContainer.innerHTML = '';
+    productos.forEach(producto => {
+        let productoContainer = document.createElement("div");
+        productoContainer.classList.add("productoContainer");
+        productoContainer.innerHTML = `
+            <p class="categoria-producto">${producto.categoria}</p>
+            <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
+            <h2>${producto.descripcion}</h2>
+            <p>${producto.marca}</p>
+            <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">
+            <h4 class="producto-precio">${producto.precio}</h4>
+        `;
+        productosContainer.appendChild(productoContainer);
+    });
+}
+
+function eliminarProducto(codigo) {
+    if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+        fetch(URL + `productos/${codigo}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    alert('Producto eliminado.');
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+    }
+}
+
+document.getElementById('buscar-bar').addEventListener('input', () => {
+  const termino = document.getElementById('buscar-bar').value.toLowerCase();
+  const productosFiltrados = todosLosProductos.filter(producto =>
+      producto.descripcion.toLowerCase().includes(termino) ||
+      producto.marca.toLowerCase().includes(termino) ||
+      producto.categoria.toLowerCase().includes(termino)
+  );
+  mostrarProductos(productosFiltrados);
+});
