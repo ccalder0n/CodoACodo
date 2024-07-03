@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn-icons-png.flaticon.com/512/1177/1177771.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Noticias</title>
+</head>
+<body>
+    <header>
+        <div id="encabezado">
+            <div id="logos"><img class="header-img-logo" src="../static/img/logo.png" alt=""></div>
+            <div id="titulo"><img class="header-img" src="../static/img/titulo.png" alt=""></div>
+            <div id="sesion"><a id="cuenta" href="../templates/sesion.html">Iniciar Sesion</a></div>
+        </div>
+        <div> 
+            <nav>
+                <a class="pestaña" href="../index.html">Inicio</a>
+                <a class="pestaña" href="./noticias.html">Noticias</a>
+                <a class="pestaña" href="./hardware.html">Tutoriales</a>
+                <a class="pestaña" href="./tienda.html">Tienda</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="seccionClara">
+            <article class="titulo">
+                <h1>Enterate de las novedades tecnologicas</h1>
+            </article>
+            <article class="tarjeta">
+                <h2>En linux muchas veces el entorno grafico no permite cambiar el horario, 
+                    cómo cambiarlo por consola</h2>
+                <img alt="" class="imagen-inicio" src="https://kinsta.com/es/wp-content/uploads/sites/8/2021/10/linux-comandos.jpeg">
+                <p>
+                    El comando date en Linux nos muestra la hora y fecha actual del sistema. 
+                    También nos permite cambiar la hora y fecha por medio de la terminal en 
+                    Linux.
+                </p>
+                <p>
+                    <i>
+                    Tenemos que tener en cuenta que si el servicio systemd-timesyncd.service se encuentra activo, el sistema automáticamente sincronizará la hora a través de Internet.
+                    <br>
+                    También tendremos en cuenta la configuración NTP del servicio timedatectl
+                    </i>
+                </p>
+                <br>
+                <h3>Acerca del servicio systemd-timesyncd.service</h3>
+                <p>
+                    systemd-timesyncd es un servicio del sistema que se puede usar para 
+                    sincronizar el reloj del sistema local con un servidor remoto de NTP 
+                    (Network Time Protocol).
+                </p>
+                <h3>Acerca del servicio timedatectl y la sincronización NTP</h3>
+                <p>
+                    NTP es un servicio de Linux que permite sincronizar la hora del sistema 
+                    ajustándola con la de otros servidores NTP de hora. Se llama así porque 
+                    se basa en el protocolo NTP.
+                    <br>
+                    El servicio timedatectl muestra la configuración actual del reloj del 
+                    sistema, incluyendo si la sincronización de tiempo de red a través de 
+                    systemd-timesyncd.service está activa.
+                </p>
+                <p>
+                    Para comprobar el status de este servicio podemos verlo con:
+                    <br>
+                    timedatectl / timedatectl status
+                </p>
+                <br>
+                <h3>MODIFICAR LA HORA EN LINUX POR MEDIO DE LA TERMINAL</h3>
+                <p>
+                    Lo primero debemos comprobar si están funcionando los servicios 
+                    anteriormente mencionados.
+                    <br>
+                    Después podemos pararlos y modificar la fecha a nuestro antojo.
+                    <br>
+                    Para modificar la hora en linux por medio de la terminal podemos 
+                    hacerlo así (en este caso vamos a poner el sistema en fecha 20 de 
+                    Septiembre de 2019):
+                </p>
+                <p>
+                    –> Parar el servicio de sincronización systemd-timesyncd :
+                    <br>
+                    systemctl stop systemd-timesyncd.service
+                </p>
+                <p>
+                    –> La sincronización de la hora del sistema en Linux también se 
+                    interrumpe si configuramos el NTP del servicio timedatectl en falso:
+                    <br>
+                    timedatectl set-ntp false
+                </p>
+                <br>
+                <h3>¿Cómo Modificar la hora y fecha con el comando date?</h3>
+                <p>
+                    El comando date es un comando de Linux que permite saber la hora y 
+                    cambiar la fecha y hora del sistema.
+                </p>
+                <p>
+                    –> Después de lo s pasos anteriores, ahora ya podemos poner el sistema a 
+                    una fecha concreta:
+                    <br>
+                    date +%Y%m%d -s "20190920"
+                </p>
+                <p>
+                    también podemos modificar la hora con el parámetro –set :
+                    <br>
+                    date --set "2019-09-20 03:30"
+                </p>
+                <p>
+                    y de forma abreviada con -s :
+                    <br>
+                    date -s "20 SEP 2019 03:30:00"
+                </p>
+                <br>
+                <h3>Comprobar si la hora se está sincronizando automáticamente en Linux</h3>
+                <p>
+                    Podemos ver un resumen de la configuración actual del reloj del sistema 
+                    con el comando timedatectl  (vemos que previamente se ha activado a 
+                    sincronización NTP):
+                    <br>
+                    timedatectl status
+                </p>
+                <br>
+                <h3>Habilitar y Deshabilitar la Sincronización NTP</h3>
+                <p>
+                    Podemos habilitar la sincronización NTP:
+                    <br>
+                    timedatectl set-ntp true
+                </p>
+                <p>
+                    o deshabilitarla:
+                    <br>
+                    timedatectl set-ntp false
+                </p>
+                <p>
+                    y podemos revisar el status del servicio asociado 
+                    systemd-timesyncd.service :
+                    <br>
+                    systemctl status systemd-timesyncd.service
+                </p>
+                <br>
+                <h3>COMPROBAR LA ZONA HORARIA DEL SISTEMA</h3>
+                <p>
+                    Si queremos comprobar que la zona horaria está correctamente configurada:
+                    <br>
+                    cat /etc/timezone
+                </p>
+            </article>
+    </main>
+    <footer>
+        <div id="pie">
+            <a href="../templates/about.html">Sobre Nosotros</a>
+        </div>
+    </footer>
+</body>
+</html>
