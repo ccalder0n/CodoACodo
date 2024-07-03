@@ -168,6 +168,16 @@ ul{
 
  
 
-
+.cerrarSesion{
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: var(--morado);
+    color: var(--claro);
+    font-size: 15px;
+    border: 1px solid #fff;
+}
 
 
