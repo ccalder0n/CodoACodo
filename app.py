@@ -38,6 +38,7 @@ class Catalogo:
             precio DECIMAL(10, 2) NOT NULL,
             imagen_url VARCHAR(255),
             categoria VARCHAR(255),
+            imagen_alternativa VARCHAR(255),
             marca VARCHAR(255))''')
         self.conn.commit()
 
@@ -46,10 +47,10 @@ class Catalogo:
         self.cursor = self.conn.cursor(dictionary=True)
         
     
-    def agregar_producto(self, descripcion, cantidad, precio, imagen, categoria , marca):
+    def agregar_producto(self, descripcion, cantidad, precio, imagen, categoria , marca , imagen_alternativa):
                
-        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url, categoria , marca) VALUES (%s, %s, %s, %s, %s , %s)"
-        valores = (descripcion, cantidad, precio, imagen, categoria , marca)
+        sql = "INSERT INTO productos (descripcion, cantidad, precio, imagen_url, categoria , marca) VALUES (%s, %s, %s, %s, %s , %s, %s)"
+        valores = (descripcion, cantidad, precio, imagen, categoria , marca,imagen_alternativa)
 
         self.cursor.execute(sql, valores)        
         self.conn.commit()
@@ -103,7 +104,7 @@ class Catalogo:
 #--------------------------------------------------------------------
 # Crear una instancia de la clase Catalogo
 # catalogo = Catalogo(host='localhost', user='root', password='', database='ninja')
-catalogo = Catalogo(host='santicasalis.mysql.pythonanywhere-services.com', user='santicasalis', password='17397060Ok', database='santicasalis$ninja')
+catalogo = Catalogo(host='santicasalis.mysql.pythonanywhere-services.com', user='santicasalis', password='17397060Ok', database='santicasalis$ninjafinal')
 
 
 # Carpeta para guardar las imagenes.
@@ -138,6 +139,7 @@ def agregar_producto():
     imagen = request.files['imagen']
     categoria = request.form['categoria']  
     marca = request.form['marca']  
+    imagen_alternativa = request.form['imagen_alternativa']  
     nombre_imagen=""
 
     
@@ -146,7 +148,7 @@ def agregar_producto():
     nombre_base, extension = os.path.splitext(nombre_imagen) #Separa el nombre del archivo de su extensión.
     nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}" #Genera un nuevo nombre para la imagen usando un timestamp, para evitar sobreescrituras y conflictos de nombres.
 
-    nuevo_codigo = catalogo.agregar_producto(descripcion, cantidad, precio, nombre_imagen,categoria , marca)
+    nuevo_codigo = catalogo.agregar_producto(descripcion, cantidad, precio, nombre_imagen,categoria , marca, imagen_alternativa)
     if nuevo_codigo:    
         imagen.save(os.path.join(RUTA_DESTINO, nombre_imagen))
 
@@ -170,7 +172,8 @@ def modificar_producto(codigo):
     nuevo_precio = request.form.get("precio")
     nueva_categoria = request.form.get("categoria")
     nueva_marca = request.form.get("marca")
-    
+    nueva_imagen_alternativa = request.form.get(" imagen_alternativa")
+
     
     # Verifica si se proporcionó una nueva imagen
     if 'imagen' in request.files:
@@ -202,7 +205,7 @@ def modificar_producto(codigo):
 
 
     # Se llama al método modificar_producto pasando el codigo del producto y los nuevos datos.
-    if catalogo.modificar_producto(codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nombre_imagen, nueva_categoria , nueva_marca):
+    if catalogo.modificar_producto(codigo, nueva_descripcion, nueva_cantidad, nuevo_precio, nombre_imagen, nueva_categoria , nueva_marca, nueva_imagen_alternativa):
         
         #Si la actualización es exitosa, se devuelve una respuesta JSON con un mensaje de éxito y un código de estado HTTP 200 (OK).
         return jsonify({"mensaje": "Producto modificado"}), 200

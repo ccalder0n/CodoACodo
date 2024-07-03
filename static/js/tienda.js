@@ -88,7 +88,7 @@
 
 
 
-const URL = "https://santicasalis.pythonanywhere.com/";
+const URL = "https://ninjaproductos.pythonanywhere.com/";
 
 let todosLosProductos = [];
 
@@ -128,7 +128,7 @@ function mostrarProductos(productos) {
               <button class="boton-eliminar" onclick="eliminarProducto('${producto.codigo}')">X</button>
               <h2>${producto.descripcion}</h2>
               <p>${producto.marca}</p>
-              <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}">
+             <img class="producto-imagen" src="https://www.pythonanywhere.com/user/santicasalis/files/home/santicasalis/mysite/static/img/${producto.imagen_url}" alt="Imagen de ${producto.descripcion}" onerror="this.onerror=null;this.src='${producto.imagen_alternativa}';">
               <h2 class="producto-precio">${producto.precio}</h2>
               <button class="button-editar"><a href="editar.html?codigo=${producto.codigo}">Editar</a></button>
           `;

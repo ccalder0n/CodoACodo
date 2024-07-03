@@ -45,9 +45,11 @@
 
         <label for="imagenProducto">Imagen del producto:</label>
         <input type="file" id="imagenProducto" name="imagen">
-
-        <br><br>
         
+        <br><br>
+        <label for="imagen_alternativa">Imagen Alternativa:</label>
+        <input type="text" id="imagen_alternativa" name="imagen_alternativa">
+
         <label for="categoria">Categoria:</label>
         <input type="text" id="categoria" name="categoria">
 
@@ -66,7 +68,7 @@
         </div>
     </footer>
     <script>
-        const URL = "https://santicasalis.pythonanywhere.com/"
+        const URL = "https://ninjaproductos.pythonanywhere.com/"
 
 
         document.getElementById('formulario').addEventListener('submit', function (event) {
@@ -100,7 +102,7 @@
         
                 .catch(function (error) {
                     console.log(error);
-                    alert('Error al agregar el producto.');
+                    // alert('Error al agregar el producto.');
                 })
 
                
@@ -111,9 +113,14 @@
                     document.getElementById('imagenProducto').value = "";
                     document.getElementById('categoria').value = "";
                     document.getElementById('marca').value = "";
+                    document.getElementById('imagen_alternativa').value = "";
+
+                    
                 });
         })
     </script>
 </body>
 
 </html>
+
+
