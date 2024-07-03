@@ -8,6 +8,7 @@
     <title>Agregar producto 🚀</title>
     <link rel="stylesheet" href="../static/css/header.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/nuevoProducto.css">
 </head>
 
 <body>
@@ -28,12 +29,12 @@
     </header>
 
 
-    <h1>Modificar Producto</h1><br>
+    <h1 class="titleNuevo">Modificar Producto </h1><br>
 
     <div id="app">
         <div id="datos-producto">
             
-            <form id="form-guardar-cambios">
+            <form id="form-guardar-cambios" class="formulario">
                 <label for="descripcionModificar">Descripción:</label>
                 <input type="text" id="descripcionModificar" required><br>
 
@@ -55,7 +56,7 @@
                 <input type="file" id="nuevaImagen"><br>
 
                 <button type="submit">Guardar Cambios</button>
-                <a href="tienda.html">Cancelar</a>
+                <button class="botonCancelar"  href="tienda.html">Cancelar</button>
             </form>
         </div>
     </div>
