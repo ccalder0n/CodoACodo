@@ -49,11 +49,19 @@
 
                 <label for="categoriaModificar">Categoria:</label>
                 <input type="text" step="0.01" id="categoriaModificar" required><br>
+                
+                <label for="imagenAlternativaModificar">Imagen:</label>
+                <input type="text" step="0.01" id="imagenAlternativaModificar" required><br>
+
                 <img id="imagen-actual" style="max-width: 200px; display: none;">
                 <img id="imagen-vista-previa"  style="max-width: 200px; display: none;">
 
+
                 <label for="nuevaImagen">Nueva Imagen:</label>
                 <input type="file" id="nuevaImagen"><br>
+                
+              
+
 
                 <button type="submit">Guardar Cambios</button>
                 <button class="botonCancelar"  href="tienda.html">Cancelar</button>
@@ -68,8 +76,9 @@
         let descripcion = '';
         let cantidad = '';
         let precio = '';
-        let categoria = '';
         let marca = '';
+        let categoria = '';
+        let imagen_alternativa ='';
         let imagen_url = '';
         let imagenSeleccionada = null;
         let imagenUrlTemp = null;
@@ -97,8 +106,10 @@
                     precio = data.precio;
                     marca = data.marca;
                     categoria = data.categoria;
+                    imagen_alternativa =data.imagen_alternativa;
                     imagen_url = data.imagen_url;
                     mostrarDatosProducto = true;
+                    
                     mostrarFormulario();
                 })
                 .catch(error => {
@@ -114,6 +125,8 @@
                 document.getElementById('precioModificar').value = precio;
                 document.getElementById('marcaModificar').value = marca;
                 document.getElementById('categoriaModificar').value = categoria;
+                document.getElementById('imagenAlternativaModificar').value = imagen_alternativa;
+
 
                 const imagenActual = document.getElementById('imagen-actual');
                 if (imagen_url && !imagenSeleccionada) {
@@ -147,16 +160,17 @@
             formData.append('descripcion', document.getElementById('descripcionModificar').value);
             formData.append('cantidad', document.getElementById('cantidadModificar').value);
             formData.append('precio', document.getElementById('precioModificar').value);
-            formData.append('marca', document.getElementById('marcaModificar').value);
             formData.append('categoria', document.getElementById('categoriaModificar').value);
+            formData.append('marca', document.getElementById('marcaModificar').value);
+            formData.append('imagen_alternativa', document.getElementById('imagenAlternativaModificar').value);
 
+
+            
             if (imagenSeleccionada) {
                 formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
             }
-            for (let [key, value] of formData.entries()) {
-        console.log(key, value);
-        
-    }
+  
+
 
             fetch(URL + 'productos/' + codigo, {
                 method: 'PUT',
@@ -188,10 +202,13 @@
             document.getElementById('descripcionModificar').value = '';
             document.getElementById('cantidadModificar').value = '';
             document.getElementById('precioModificar').value = '';
-            document.getElementById('categoriaModificar').value = '';
             document.getElementById('marcaModificar').value = '';
+            document.getElementById('categoriaModificar').value = '';
+            document.getElementById('imagenAlternativaModificar').value = '';
             document.getElementById('nuevaImagen').value = '';
+          
 
+         
             const imagenActual = document.getElementById('imagen-actual');
             imagenActual.style.display = 'none';
 
@@ -204,6 +221,7 @@
             precio = '';
             marca = '';
             categoria = '';
+            imagen_alternativa="";
             imagen_url = '';
             imagenSeleccionada = null;
             imagenUrlTemp = null;

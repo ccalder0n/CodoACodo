@@ -34,6 +34,7 @@ function mostrarProductos(productos) {
       productosContainer.appendChild(mensaje);
   } else {
       productos.forEach(producto => {
+          console.log(producto);
           let productoContainer = document.createElement("div");
           productoContainer.classList.add("productoContainer");
           productoContainer.innerHTML = `
