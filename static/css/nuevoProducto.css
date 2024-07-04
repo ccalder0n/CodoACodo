@@ -1,8 +1,15 @@
+:root{
+    --morado: #dd4470;
+    --rosa: #eb5982;
+    --oscuro: rgb(63, 62, 62);
+    --claro: white;
+}
+
 .formulario {
-    background-color: #fff;
+    background-color: var(--claro);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 8px #eb5982;
+    box-shadow: 0 0 8px var(--rosa);
     max-width: 400px;
     width: 100%;
     margin: 2rem  auto;
@@ -13,37 +20,36 @@
     display: block;
     font-size: 16px;
     margin-bottom: 8px;
-    color: #333;
-   
+    color: var(--oscuro);
 }
 
 .formulario input[type="text"] {
     width: 80%;
     padding: 10px;
     margin-bottom: 16px;
-    border: 1px solid #eb5982;
+    border: 1px solid var(--rosa);
     border-radius: 4px;
     font-size: 14px;
     
 }
+
 .formulario input[type="number"] {
     width: 80%;
     padding: 10px;
     margin-bottom: 16px;
-    border: 1px solid #eb5982;
+    border: 1px solid var(--rosa);
     border-radius: 4px;
     font-size: 14px;
     
 }
 
-
 .formulario button[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #dd4470;
+    background-color: var(--morado);
     border: none;
     border-radius: 4px;
-    color: white;
+    color: var(--claro);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -52,24 +58,23 @@
 }
 
 .formulario button[type="submit"]:hover {
-    background-color: #eb5982;
+    background-color: var(--rosa);
 }
+
 .botonCancelar {
     width:100%;
     padding: 10px;
-    background-color: #dd4470;
+    background-color: var(--morado);
     border: none;
     border-radius: 4px;
-    color: white;
+    color: var(--claro);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
     display: inline-block;
     margin: 0 auto;
     text-decoration: none;
-   ;
 }
-
 
 .titleNuevo{ 
   text-align: center;
@@ -81,10 +86,10 @@
     display: inline-block;
     width:95%;
     padding: 10px;
-    background-color: #dd4470;
+    background-color: var(--morado);
     border: none;
     border-radius: 4px;
-    color: white;
+    color: var(--claro);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
