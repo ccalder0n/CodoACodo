@@ -117,7 +117,7 @@
 
                 const imagenActual = document.getElementById('imagen-actual');
                 if (imagen_url && !imagenSeleccionada) {
-                    imagenActual.src = './static/img/' + imagen_url;
+                    imagenActual.src = './static/imagenes/' + imagen_url;
                     imagenActual.style.display = 'block';
                 } else {
                     imagenActual.style.display = 'none';
@@ -153,6 +153,10 @@
             if (imagenSeleccionada) {
                 formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
             }
+            for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+        
+    }
 
             fetch(URL + 'productos/' + codigo, {
                 method: 'PUT',
@@ -162,6 +166,7 @@
                     if (response.ok) {
                         return response.json();
                     } else {
+                        console.log(formData);
                         throw new Error('Error al guardar los cambios del producto.');
                     }
                 })
