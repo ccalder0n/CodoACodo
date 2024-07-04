@@ -160,17 +160,14 @@
             formData.append('descripcion', document.getElementById('descripcionModificar').value);
             formData.append('cantidad', document.getElementById('cantidadModificar').value);
             formData.append('precio', document.getElementById('precioModificar').value);
+            formData.append('imagen_alternativa', document.getElementById('imagenAlternativaModificar').value);
             formData.append('categoria', document.getElementById('categoriaModificar').value);
             formData.append('marca', document.getElementById('marcaModificar').value);
-            formData.append('imagen_alternativa', document.getElementById('imagenAlternativaModificar').value);
-
 
             
             if (imagenSeleccionada) {
                 formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
             }
-  
-
 
             fetch(URL + 'productos/' + codigo, {
                 method: 'PUT',
@@ -206,8 +203,6 @@
             document.getElementById('categoriaModificar').value = '';
             document.getElementById('imagenAlternativaModificar').value = '';
             document.getElementById('nuevaImagen').value = '';
-          
-
          
             const imagenActual = document.getElementById('imagen-actual');
             imagenActual.style.display = 'none';
