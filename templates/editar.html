@@ -54,7 +54,7 @@
                 <input type="text" step="0.01" id="imagenAlternativaModificar" required><br>
 
                 <img id="imagen-actual" style="max-width: 200px; display: none;">
-                
+
                 <img id="imagen-vista-previa"  style="max-width: 200px; display: none;">
 
 
@@ -89,7 +89,7 @@
         document.addEventListener('DOMContentLoaded', obtenerProducto);
 
         function obtenerProducto() {
-            console.log("Código obtenido de la URL:", codigo); // Verificar que el código se obtiene correctamente
+            
             fetch(URL + 'productos/' + codigo)
                 .then(response => {
                     if (response.ok) {
@@ -162,12 +162,15 @@
             formData.append('categoria', document.getElementById('categoriaModificar').value);
             formData.append('marca', document.getElementById('marcaModificar').value);
             formData.append('imagen_alternativa', document.getElementById('imagenAlternativaModificar').value);
-           
 
+           
+    
             
             if (imagenSeleccionada) {
                 formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
             }
+            console.log(document.getElementById('imagenAlternativaModificar').value);
+            console.log(formData)
 
             fetch(URL + 'productos/' + codigo, {
                 method: 'PUT',

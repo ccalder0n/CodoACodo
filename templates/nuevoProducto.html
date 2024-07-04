@@ -90,7 +90,8 @@
                     
                         return response.json(); 
                     } else {
-                      console.log(response);
+                      console.log(response.json());
+
                         throw new Error('Error al agregar el producto.');
                     }
             })
@@ -102,7 +103,7 @@
         
                 .catch(function (error) {
                     console.log(error);
-                    // alert('Error al agregar el producto.');
+                    alert('Error al agregar el producto.');
                 })
 
                
