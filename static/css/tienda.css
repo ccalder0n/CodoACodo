@@ -97,10 +97,13 @@ flex-wrap: wrap;
   font-size:small
 }
 
-.productosContainer :hover{
-  scale: 1.1;
+.productosContainer {
+  transition: transform 0.3s ease;
 }
-  
+
+.productosContainer:hover {
+  transform: scale(1.1);
+}
 .productoDetalle{
   background-color: var(--morado);
 
@@ -154,10 +157,16 @@ flex-wrap: wrap;
   .seccionUno{ font-size: 5rem;}
   .titleNuevo{font-size: 5rem;}
   .filter-buttons{flex-direction: row;}
+  .productosContainer:hover {
+    transform: none; 
+  }
 }
 
 @media only screen  and (max-width: 425px){
   .seccionUno{ font-size: 4rem;}
   .titleNuevo{font-size: 4rem;}
   .filter-buttons{flex-direction: column;}
+  .productosContainer:hover {
+    transform: none; 
+  }
 }
