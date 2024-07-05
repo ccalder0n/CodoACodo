@@ -4,6 +4,7 @@
     --oscuro: rgb(63, 62, 62);
     --claro: white;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 4px;
 }
 
 *{
@@ -25,7 +26,7 @@ ul{
     background-color: var(--oscuro);
     padding: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 2rem;
+    font-size: 5rem;
     color: var(--claro);
     text-align: center;
     margin-bottom: 20px;
@@ -74,7 +75,7 @@ ul{
     background-color: var(--gris);
     text-align: center;
     padding: 20px;
-    font-size: 2rem;
+    font-size: 4rem;
 }
 
 .seccionOscura{
@@ -85,7 +86,7 @@ ul{
     justify-content: center;
     background-color: var(--oscuro);
     padding: 20px;
-    font-size: 2rem;
+    font-size: 4rem;
 }
 
 /* Para Portadas */
@@ -102,7 +103,7 @@ ul{
     align-items: center;
     justify-content: flex-end;
     text-align: center;
-    font-size: 16px;
+    font-size: 4rem;
     padding: 20px;
     padding-bottom: 50px;
     margin-bottom: 20px;
@@ -121,7 +122,7 @@ ul{
     padding: 10px 20px;
     background: var(--oscuro);
     color: var(--claro);
-    font-size: 15px;
+    font-size: 3rem;
     border: 1px solid var(--claro);
     text-decoration: none;
 }
@@ -163,7 +164,7 @@ ul{
   
 .contenido-articulo p {
     width: 30%;
-    font-size: 20px;
+    font-size: 5rem;
     margin: 10px 0;
 }
 
@@ -175,17 +176,26 @@ ul{
     padding: 10px 20px;
     background: var(--morado);
     color: var(--claro);
-    font-size: 15px;
+    font-size: 3rem;
     border: 1px solid var(--claro);
 }
 
 @media only screen  and (max-width: 768px){
     .contenido-articulo{flex-direction: column;}
     .contenido-articulo img, p, a{margin: 10px 0}
+    .contenido-articulo img{width: 60%;}
+    .contenido-articulo p{width: 60%;}
+    .contenido-articulo p{font-size: 5rem;}
+    .seccionOscura{min-height: 88vh;}
+    .seccionClara{min-height: 88vh;}
 }
 
 @media only screen  and (max-width: 425px){
     .contenido-articulo{flex-direction: column;}
     .contenido-articulo img, p, a{margin: 10px 0}
-    .contenido-articulo p{font-size: 2rem;}
+    .contenido-articulo img{width: 80%;}
+    .contenido-articulo p{width: 80%;}
+    .contenido-articulo p{font-size: 4rem;}
+    .seccionOscura{min-height: 85vh;}
+    .seccionClara{min-height: 85vh;}
 }
