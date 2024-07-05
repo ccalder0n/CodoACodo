@@ -45,7 +45,7 @@
 .filter-buttons{
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
@@ -139,9 +139,11 @@
   .productoContainer {justify-content: center;margin: 0 auto}
   .seccionUno{min-height: 88vh; font-size: 5rem;}
   .titleNuevo{font-size: 5rem;}
+  .filter-buttons{flex-direction: row;}
 }
 
 @media only screen  and (max-width: 425px){
   .seccionUno{min-height: 85vh; font-size: 4rem;}
   .titleNuevo{font-size: 4rem;}
+  .filter-buttons{flex-direction: column;}
 }

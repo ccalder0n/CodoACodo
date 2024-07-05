@@ -3,7 +3,20 @@
     --rosa: #eb5982;
     --oscuro: rgb(63, 62, 62);
     --claro: white;
+    font-size: 4px;
 }
+
+.seccionUno{
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gris);
+    text-align: center;
+    padding: 20px;
+    font-size: 4rem;
+  }
 
 .formulario {
     width: 80%;
@@ -78,7 +91,7 @@
 
 .titleNuevo{ 
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 4rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
