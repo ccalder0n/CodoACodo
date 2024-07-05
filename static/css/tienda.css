@@ -97,11 +97,11 @@ flex-wrap: wrap;
   font-size:small
 }
 
-.productosContainer {
+.productoContainer {
   transition: transform 0.3s ease;
 }
 
-.productosContainer:hover {
+.productoContainer:hover {
   transform: scale(1.1);
 }
 .productoDetalle{
@@ -157,7 +157,7 @@ flex-wrap: wrap;
   .seccionUno{ font-size: 5rem;}
   .titleNuevo{font-size: 5rem;}
   .filter-buttons{flex-direction: row;}
-  .productosContainer:hover {
+  .productoContainer:hover {
     transform: none; 
   }
 }
@@ -166,7 +166,7 @@ flex-wrap: wrap;
   .seccionUno{ font-size: 4rem;}
   .titleNuevo{font-size: 4rem;}
   .filter-buttons{flex-direction: column;}
-  .productosContainer:hover {
+  .productoContainer:hover {
     transform: none; 
   }
 }
