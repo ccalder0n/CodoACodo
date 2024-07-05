@@ -9,11 +9,11 @@
 }
 
 .seccionUno{
-  min-height: 70vh;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: var(--gris);
   text-align: center;
   padding: 20px;
@@ -63,7 +63,7 @@
   border-radius: 5px;
 }
 
-.buscar-button:hover{
+.filter-buttons button:hover{
   background-color: var(--rosa);
 }
 
@@ -75,9 +75,8 @@
 }
 
 .productosContainer{
-  min-height: 70vh;
   display: flex;
-  flex-direction: column;
+flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   background-color: var(--gris);
@@ -87,18 +86,24 @@
   
 .productoContainer{
   padding: 2rem;
-  margin: 1rem;
+  margin: 4rem;
   border: 1px solid var(--claro);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--morado);
   background-color: var(--claro);
   transition: transform 0.2s;
-  max-width: 400px;
+  width: 400px;
   text-align: center;
+  font-size:small
+}
+
+.productosContainer :hover{
+  scale: 1.1;
 }
   
 .productoDetalle{
   background-color: var(--morado);
+
 }
 
 .categoria-producto{
@@ -118,18 +123,27 @@
   margin: 0 auto;
 }
 
-.boton-editar, .boton-eliminar{
+.button-editar, .boton-eliminar{
   background-color: var(--rosa); /* Color de fondo */
   color: var(--claro); /* Color del texto */
   border: none; /* Sin borde */
-  padding: 0.5rem 1rem; /* Espaciado interno */
+  padding: 10px 10px; /* Espaciado interno */
   cursor: pointer; /* Cambiar cursor a pointer al pasar el mouse */
   border-radius: 4px; /* Borde redondeado */
   font-size: 14px; /* Tamaño de fuente */
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.button-editar a {
+  text-decoration: none;
+  color: var(--claro);
+  padding: 20px  15px;
+  
 }
 
 .titleNuevo{ 
-  font-size: 4rem;
+  font-size: 6rem;
   text-align: center;
   margin-top: 2rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -137,13 +151,13 @@
 
 @media only screen  and (max-width: 768px){
   .productoContainer {justify-content: center;margin: 0 auto}
-  .seccionUno{min-height: 88vh; font-size: 5rem;}
+  .seccionUno{ font-size: 5rem;}
   .titleNuevo{font-size: 5rem;}
   .filter-buttons{flex-direction: row;}
 }
 
 @media only screen  and (max-width: 425px){
-  .seccionUno{min-height: 85vh; font-size: 4rem;}
+  .seccionUno{ font-size: 4rem;}
   .titleNuevo{font-size: 4rem;}
   .filter-buttons{flex-direction: column;}
 }
