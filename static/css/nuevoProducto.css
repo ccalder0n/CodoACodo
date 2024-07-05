@@ -6,12 +6,12 @@
 }
 
 .formulario {
+    width: 80%;
     background-color: var(--claro);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 8px var(--rosa);
     max-width: 400px;
-    width: 100%;
     margin: 2rem  auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

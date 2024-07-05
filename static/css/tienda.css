@@ -5,14 +5,19 @@
   --oscuro: rgb(63, 62, 62);
   --claro: white;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 4px;
 }
 
 .seccionUno{
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background-color: var(--gris);
+  text-align: center;
+  padding: 20px;
+  font-size: 4rem;
 }
 
 .seccionUno button{
@@ -31,23 +36,28 @@
 }
 
 .buscar-container{
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 15px;  
 }
 
 .filter-buttons{
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }
 
 .filter-buttons button{
   color: var(--claro);
+  margin-top: 15px;
 }
 
 .buscar-bar{
-  width: 300px;
+  width: 30%;
   padding: 10px;
   border: 2px solid var(--morado);
   border-radius: 5px;
@@ -65,14 +75,13 @@
 }
 
 .productosContainer{
-  margin: 2rem;
-  background-color: var(--gris);
+  min-height: 70vh;
   display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  background-color: var(--gris);
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
   font-style: normal;
 }
   
@@ -102,7 +111,7 @@
 }
 
 .producto-imagen{
-  width: 300px; 
+  width: 50%; 
   height:200px; 
   object-fit: contain;
   display: block;
@@ -120,15 +129,19 @@
 }
 
 .titleNuevo{ 
+  font-size: 4rem;
   text-align: center;
   margin-top: 2rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-  
-@media (max-width: 768px){
-  .productoContainer {
-    justify-content: center;
-    margin: 0 auto
-  }
+
+@media only screen  and (max-width: 768px){
+  .productoContainer {justify-content: center;margin: 0 auto}
+  .seccionUno{min-height: 88vh; font-size: 5rem;}
+  .titleNuevo{font-size: 5rem;}
 }
-  
+
+@media only screen  and (max-width: 425px){
+  .seccionUno{min-height: 85vh; font-size: 4rem;}
+  .titleNuevo{font-size: 4rem;}
+}

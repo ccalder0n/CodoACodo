@@ -63,6 +63,7 @@ button{
     padding: 10px 30px;
     border: 2px solid var(--morado);
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 button:hover{
